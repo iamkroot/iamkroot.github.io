@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Musings of a dev">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <title>Krut Patel</title>
+</head>
+
+<body>
+  <div class="site">
+    <div class="common-header">
+      <div class="title">
+        <img class="sidebar-img circle my-photo" src="images/krut_patel_128x128.jpg">
+        <div class="title-text">
+          <h1 class="name"><a href="/">Krut Patel</a></h1>
+          <div class="contact">
+            <a href="mailto:kroot.patel@gmail.com" class="contact-link"><img src="images/mail.svg"></a>
+            <a href="https://github.com/iamkroot" class="contact-link"><img src="images/github.svg"></a>
+            <a href="https://www.linkedin.com/in/krutpatel99" class="contact-link"><img src="images/linkedin.svg"></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar">
+        <a class="navbar-elem" href="/">ABOUT</a>
+        <a class="navbar-elem" href="/resume/">RESUME</a>
+        <a class="navbar-elem" href="/projects/">PROJECTS</a>
+        <!--<a class="navbar-elem" href="/blog/">BLOG</a>-->
+      </div>
+    </div>
+
+    <div class="content" id="content-projects">
+      Here's some projects that I have built for fun- 
+      <div class="project-entry" id="project-trakts">
+        <div class="project-text">
+          <div class="project-title">
+            <a href="https://github.com/iamkroot/trakt-scrobbler">Trakt Scrobbler</a>
+          </div>
+          <div class="project-description">
+            <p>
+              Trakt Scrobbler is a Python application that automatically recognizes the currently playing media on your PC and syncs that information with <a href="https://trakt.tv">Trakt</a> servers. It features a multi-threaded model with support for sourcing information from multiple media players.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="project-entry" id="project-ilc">
+        <div class="project-text">
+          <div class="project-title">
+            <a href="https://github.com/iamkroot/ilc-scraper">Impartus Scraper</a>
+          </div>
+          <div class="project-description">
+            <p>
+              Python application to download videos from Impartus Lecture Capture servers hosted in BITS Hyderabad. It internally uses ffmpeg to download HLS streams of the videos.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="project-entry" id="project-batchsnap">
+        <div class="project-text">
+          <div class="project-title">
+            <a href="https://github.com/crux-bphc/batchsnap-sorter">Batchsnap Sorter</a>
+          </div>
+          <div class="project-description">
+            <p>
+              The Batchsnap Sorter identifies unique faces from a corpus of photos and allows the user to retrieve images containing their face. It works by first running a face detection network on the images, extracting their feature embeddings, and finally clustering the faces using HDBSCAN.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>
