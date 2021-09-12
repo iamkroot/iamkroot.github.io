@@ -135,7 +135,7 @@ a:hover {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   align-items: flex-start;
   margin-bottom: 1em;
 }
@@ -148,13 +148,6 @@ a:hover {
   flex-grow: 0;
 }
 
-#education-gatech {
-  width: 4em;
-  height: 2em;
-  margin-left: -5em;
-  margin-right: 1em;
-}
-
 #education-bits {
   width: 2em;
   height: 2em;
@@ -164,7 +157,7 @@ a:hover {
 
 .education-line {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
 }
@@ -187,7 +180,7 @@ a:hover {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   align-items: flex-start;
 }
 
@@ -199,30 +192,9 @@ a:hover {
   flex-grow: 0;
 }
 
-#work-gatech {
-  width: 4em;
-  height: 2em;
-  margin-left: -5em;
-  margin-right: 1em;
-}
-
-#work-intel {
-  width: 2.5em;
-  height: 2.5em;
-  margin-left: -3.5em;
-  margin-right: 1em;
-}
-
-#work-gsoc {
-  width: 2.5em;
-  height: 2.5em;
-  margin-left: -3.5em;
-  margin-right: 1em;
-}
-
 .work-line {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
 }
@@ -331,23 +303,5 @@ a:hover {
 
   .sidebar-img {
     display: none
-  }
-}
-
-@media screen and (max-width: 560px) {
-  .education-duration {
-    display: none;
-  }
-
-  .education-gpa {
-    display: none;
-  }
-
-  .work-duration {
-    display: none;
-  }
-
-  .work-location {
-    display: none;
   }
 }
