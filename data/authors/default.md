@@ -1,16 +1,17 @@
 ---
-name: Tails Azimuth
-avatar: /static/images/avatar.png
-occupation: Professor of Atmospheric Science
-company: Stanford University
-email: address@yoursite.com
-twitter: https://twitter.com/Twitter
-linkedin: https://www.linkedin.com
-github: https://github.com
+name: Krut Patel
+avatar: /static/images/krut_patel_128x128.jpg
+occupation: Research Fellow
+company: Microsoft Research
+email: kroot.patel@gmail.com
+twitter: https://twitter.com/krutpatel99
+github: https://github.com/iamkroot
 ---
 
-Tails Azimuth is a professor of atmospheric sciences at the Stanford AI Lab. His research interests includes complexity modelling of tailwinds, headwinds and crosswinds.
+Hey! I'm Krut Patel. Welcome to my little corner of the internet!
 
-He leads the clean energy group which develops 3D air pollution-climate models, writes differential equation solvers, and manufactures titanium plated air ballons. In his free time he bakes raspberry pi.
+I'm currently a Research Fellow at Microsoft Research India, working on Big Data Systems. Prior to this, I was a summer intern with the DIAS Lab at EPFL, Switzerland, where I developed a scalable CSV Parser in a JIT-compiled OLAP database system.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+I love pushing the boundaries of computing performance, and am exploring the fields of Compilers, Databases and Computer Systems.
+
+Most of my time is spent on browsing HN and automating all the repetitive stuff using Python scripts. Of late, I have been learning the fundamentals of Type Theory through the excellent book Types and Programming Languages.
