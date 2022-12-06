@@ -61,6 +61,16 @@ module.exports = withBundleAnalyzer({
   images: {
     unoptimized: true,
   },
+  async redirects() {
+    // temporarily redirect to About page
+    return [
+      {
+        source: '/',
+        destination: '/about',
+        permanent: false,
+      },
+    ]
+  },
   async headers() {
     return [
       {
