@@ -15,3 +15,5 @@ I'm currently a Research Fellow at Microsoft Research India, working on Big Data
 I love pushing the boundaries of computing performance, and am exploring the fields of Compilers, Databases and Computer Systems.
 
 Most of my time is spent on browsing HN and automating all the repetitive stuff using Python scripts. Of late, I have been learning the fundamentals of Type Theory through the excellent book Types and Programming Languages.
+
+<ReadingActivity rawCalData={props.rawCalData} />

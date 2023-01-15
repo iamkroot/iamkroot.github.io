@@ -6,10 +6,12 @@ import CustomLink from './Link'
 import TOCInline from './TOCInline'
 import Pre from './Pre'
 import { BlogNewsletterForm } from './NewsletterForm'
+import ReadingActivity from './ReadingActivity'
 
 export const MDXComponents = {
   Image,
   TOCInline,
+  ReadingActivity,
   a: CustomLink,
   pre: Pre,
   BlogNewsletterForm: BlogNewsletterForm,
