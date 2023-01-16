@@ -1,6 +1,6 @@
 ---
 name: Krut Patel
-avatar: /static/images/krut_patel_128x128.jpg
+avatar: /static/images/krut_patel_570x570.png
 occupation: Research Fellow
 company: Microsoft Research
 email: kroot.patel@gmail.com
