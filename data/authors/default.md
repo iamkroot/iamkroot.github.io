@@ -16,4 +16,6 @@ I love pushing the boundaries of computing performance, and am exploring the fie
 
 Most of my time is spent on browsing HN and automating all the repetitive stuff using Python scripts. Of late, I have been learning the fundamentals of Type Theory through the excellent book Types and Programming Languages.
 
+## My Reading Activity
+
 <ReadingActivity rawCalData={props.rawCalData} />

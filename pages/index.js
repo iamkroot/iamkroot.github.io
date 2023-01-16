@@ -1,4 +1,5 @@
 import Link from '@/components/Link'
+import NewsletterForm from '@/components/NewsletterForm'
 import { PageSEO } from '@/components/SEO'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
@@ -6,8 +7,6 @@ import { getAllFilesFrontMatter } from '@/lib/mdx'
 import formatDate from '@/lib/utils/formatDate'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-
-import NewsletterForm from '@/components/NewsletterForm'
 
 const MAX_DISPLAY = 5
 

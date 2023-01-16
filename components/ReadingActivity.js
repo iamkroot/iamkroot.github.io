@@ -1,7 +1,9 @@
-import Calendar, { CalendarData, Day, Level } from 'react-activity-calendar'
+import Calendar from 'react-activity-calendar'
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import { useTheme } from 'next-themes'
+import ReactTooltip from 'react-tooltip'
 
 const RANGES = [0, 15 * 60, 45 * 60, 2 * 60 * 60]
 
@@ -15,8 +17,6 @@ const valueToLevel = (value) => {
   return RANGES.length
 }
 
-import { useTheme } from 'next-themes'
-
 const readCalData = (data) => {
   let totalReadTime = 0
 
@@ -25,7 +25,6 @@ const readCalData = (data) => {
   let lastyear = now.subtract(1, 'year')
 
   let year = lastyear.toDate().toISOString()
-  console.log(year)
   for (const [date, value] of Object.entries(data)) {
     if (date < year) {
       continue
@@ -33,7 +32,7 @@ const readCalData = (data) => {
     totalReadTime += value
     days.push({
       date,
-      value,
+      count: Math.round(value),
       level: valueToLevel(value),
     })
   }
@@ -62,19 +61,19 @@ const ReadingActivity = (props) => {
   dayjs.extend(relativeTime)
 
   let { days: data, totalReadTime } = readCalData(props.rawCalData)
-  console.log({ totalReadTime })
   let readTimeStr = dayjs.duration(totalReadTime, 'seconds').humanize()
   let theme = resolvedTheme === 'light' ? DEFAULT_LIGHT_THEME : DEFAULT_DARK_THEME
 
   let labels = {
     totalCount: `${readTimeStr} read in the last year.`,
-    tooltip: '{{date}}: {{count}}',
-    // legend: {
-    //     less: "0",
-    //     more: "2 hours"
-    // }
+    // Cannot humanize the seconds sadly
+    tooltip: '{{date}}: {{count}} seconds',
   }
-  return <Calendar data={data} theme={theme} labels={labels} hideTotalCount={true} />
+  return (
+    <Calendar data={data} theme={theme} labels={labels} hideTotalCount={true}>
+      <ReactTooltip html />
+    </Calendar>
+  )
 }
 
 export default ReadingActivity

@@ -8,7 +8,6 @@ const DEFAULT_LAYOUT = 'AuthorLayout'
 export async function getStaticProps() {
   const authorDetails = await getFileBySlug('authors', ['default'])
   const p = path.join(process.cwd(), 'data', 'read_stats.json')
-  console.warn(p)
   const rawCalData = JSON.parse(fs.readFileSync(p))
   return { props: { authorDetails, rawCalData } }
 }
