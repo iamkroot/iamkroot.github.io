@@ -70,9 +70,17 @@ const ReadingActivity = (props) => {
     tooltip: '{{date}}: {{count}} seconds',
   }
   return (
-    <Calendar data={data} theme={theme} labels={labels} hideTotalCount={true}>
-      <ReactTooltip html />
-    </Calendar>
+    <div className="flex overflow-x-scroll pt-4">
+      <Calendar
+        style={{ minWidth: '40rem' }}
+        data={data}
+        theme={theme}
+        labels={labels}
+        hideTotalCount={true}
+      >
+        <ReactTooltip html />
+      </Calendar>
+    </div>
   )
 }
 
