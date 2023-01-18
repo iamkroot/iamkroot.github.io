@@ -18,22 +18,34 @@ const valueToLevel = (value) => {
 }
 
 const readCalData = (data) => {
+  let days = []
+  const now = dayjs()
+  const nowDate = now.toDate().toISOString()
+  const lastyear = now.subtract(1, 'year')
+  const year = lastyear.toDate().toISOString()
+
+  let foundToday = false
   let totalReadTime = 0
 
-  let days = []
-  let now = dayjs()
-  let lastyear = now.subtract(1, 'year')
-
-  let year = lastyear.toDate().toISOString()
   for (const [date, value] of Object.entries(data)) {
     if (date < year) {
       continue
+    }
+    if (nowDate == date) {
+      foundToday = true
     }
     totalReadTime += value
     days.push({
       date,
       count: Math.round(value),
       level: valueToLevel(value),
+    })
+  }
+  if (!foundToday) {
+    days.push({
+      date: nowDate,
+      count: 0.0,
+      level: valueToLevel(0.0),
     })
   }
   return { days, totalReadTime }
