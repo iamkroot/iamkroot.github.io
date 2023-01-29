@@ -18,7 +18,7 @@ Much of my time is spent browsing [HN](https://news.ycombinator.com/) and automa
 
 ## My Reading Activity
 
-I am an avid reader of long-form novels, and primarily enjoy speculative fiction. [Ted Chiang](https://en.wikipedia.org/wiki/Ted_Chiang) is my favourite author; everyone should read [The Great Silence](https://nautil.us/the-great-silence-237510/) at least once a year!
+I am an avid reader and primarily enjoy speculative fiction. [Ted Chiang](https://en.wikipedia.org/wiki/Ted_Chiang) is my favourite author; everyone should read [The Great Silence](https://nautil.us/the-great-silence-237510/) at least once a year!
 
 The following Github-style graph shows the time devoted to reading novels on a daily basis. Extracted from [Moon+ Reader](https://play.google.com/store/apps/details?id=com.flyersoft.moonreader) using [moonreader-py](https://github.com/iamkroot/moonreader-py).
 

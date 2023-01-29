@@ -2,6 +2,7 @@ import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { getFileBySlug } from '@/lib/mdx'
 import fs from 'fs'
 import path from 'path'
+import Head from 'next/head'
 
 const DEFAULT_LAYOUT = 'AuthorLayout'
 
@@ -16,11 +17,18 @@ export default function About({ authorDetails, rawCalData }) {
   const { mdxSource, frontMatter } = authorDetails
 
   return (
-    <MDXLayoutRenderer
-      layout={frontMatter.layout || DEFAULT_LAYOUT}
-      mdxSource={mdxSource}
-      frontMatter={frontMatter}
-      rawCalData={rawCalData}
-    />
+    <>
+      {frontMatter.avatar && (
+        <Head>
+          <link rel="prefetch" href={frontMatter.avatar} />
+        </Head>
+      )}
+      <MDXLayoutRenderer
+        layout={frontMatter.layout || DEFAULT_LAYOUT}
+        mdxSource={mdxSource}
+        frontMatter={frontMatter}
+        rawCalData={rawCalData}
+      />
+    </>
   )
 }
