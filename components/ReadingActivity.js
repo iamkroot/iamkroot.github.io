@@ -79,7 +79,10 @@ const ReadingActivity = (props) => {
   let labels = {
     totalCount: `${readTimeStr} read in the last year.`,
     // Cannot humanize the seconds sadly
-    tooltip: '{{date}}: {{count}} seconds',
+    tooltip: (day) => {
+      let dur = dayjs.duration(day.count, 'seconds').humanize()
+      return `${dur} spent reading on ${day.date}`
+    },
   }
   return (
     <div className="flex overflow-x-scroll pt-4">
