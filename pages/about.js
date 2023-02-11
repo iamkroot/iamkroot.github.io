@@ -20,7 +20,7 @@ export default function About({ authorDetails, rawCalData }) {
     <>
       {frontMatter.avatar && (
         <Head>
-          <link rel="preload" href={frontMatter.avatar} />
+          <link rel="preload" href={frontMatter.avatar} as="image" />
         </Head>
       )}
       <MDXLayoutRenderer
