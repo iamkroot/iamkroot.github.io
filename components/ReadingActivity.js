@@ -68,13 +68,14 @@ export const DEFAULT_DARK_THEME = {
 }
 
 const ReadingActivity = (props) => {
-  let { resolvedTheme } = useTheme()
+  let { userTheme, resolvedTheme } = useTheme()
   dayjs.extend(duration)
   dayjs.extend(relativeTime)
 
   let { days: data, totalReadTime } = readCalData(props.rawCalData)
   let readTimeStr = dayjs.duration(totalReadTime, 'seconds').humanize()
-  let theme = resolvedTheme === 'light' ? DEFAULT_LIGHT_THEME : DEFAULT_DARK_THEME
+  let theme =
+    userTheme === 'light' || resolvedTheme === 'light' ? DEFAULT_LIGHT_THEME : DEFAULT_DARK_THEME
 
   let labels = {
     totalCount: `${readTimeStr} read in the last year.`,
