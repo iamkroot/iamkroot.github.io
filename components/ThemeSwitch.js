@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
+import { applyTheme } from '@/lib/themer'
 
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false)
@@ -7,6 +8,8 @@ const ThemeSwitch = () => {
 
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), [])
+  // FIXME: This currently causes a flash :(
+  useEffect(() => applyTheme(theme), [theme])
 
   return (
     <button
