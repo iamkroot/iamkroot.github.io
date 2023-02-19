@@ -24,4 +24,4 @@ The following Github-style graph shows the time devoted to reading novels on a d
 
 <ReadingActivity rawCalData={props.rawCalData} />
 
-Currently reading: [The Master and Margarita](https://en.wikipedia.org/wiki/The_Master_and_Margarita) by [Mikhail Bulgakov](http://en.wikipedia.org/wiki/Mikhail_Bulgakov)
+Currently reading: [All Systems Red](https://en.wikipedia.org/wiki/All_Systems_Red) by [Martha Wells](http://en.wikipedia.org/wiki/Martha_Wells)
