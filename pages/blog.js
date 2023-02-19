@@ -2,6 +2,8 @@ import { getAllFilesFrontMatter } from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayout'
 import { PageSEO } from '@/components/SEO'
+import { parseMdToReact } from '@/lib/utils/mdToReact'
+import { useMemo, useState } from 'react'
 
 export const POSTS_PER_PAGE = 5
 
@@ -17,12 +19,17 @@ export async function getStaticProps() {
 }
 
 export default function Blog({ posts, initialDisplayPosts, pagination }) {
+  let [parsedPosts, setPP] = useState(posts)
+  let [parsedInitialPosts, setIPP] = useState(posts)
+  useMemo(() => parseMdToReact(posts).then(setPP), [posts])
+  useMemo(() => parseMdToReact(initialDisplayPosts).then(setIPP), [initialDisplayPosts])
+  console.log({ parsedPosts, parsedInitialPosts })
   return (
     <>
       <PageSEO title={`Blog - ${siteMetadata.author}`} description={siteMetadata.description} />
       <ListLayout
-        posts={posts}
-        initialDisplayPosts={initialDisplayPosts}
+        posts={parsedPosts}
+        initialDisplayPosts={parsedInitialPosts}
         pagination={pagination}
         title="All Posts"
       />

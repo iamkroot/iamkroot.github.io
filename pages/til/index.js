@@ -1,7 +1,9 @@
 import siteMetadata from '@/data/siteMetadata'
 import { PageSEO } from '@/components/SEO'
+import { useMemo, useState } from 'react'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import ListLayout from '@/layouts/ListLayout'
+import { parseMdToReact } from '@/lib/utils/mdToReact'
 
 const POSTS_PER_PAGE = 10
 
@@ -19,6 +21,11 @@ export async function getStaticProps() {
 }
 
 export default function TIL({ posts, initialDisplayPosts, pagination }) {
+  let [parsedPosts, setPP] = useState(posts)
+  let [parsedInitialPosts, setIPP] = useState(posts)
+  useMemo(() => parseMdToReact(posts).then(setPP), [posts])
+  useMemo(() => parseMdToReact(initialDisplayPosts).then(setIPP), [initialDisplayPosts])
+  console.log({ parsedPosts, parsedInitialPosts })
   return (
     <>
       <PageSEO
