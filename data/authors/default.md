@@ -24,4 +24,4 @@ The following Github-style graph shows the time devoted to reading novels on a d
 
 <ReadingActivity rawCalData={props.rawCalData} />
 
-Currently reading: [All Systems Red](https://en.wikipedia.org/wiki/All_Systems_Red) by [Martha Wells](http://en.wikipedia.org/wiki/Martha_Wells)
+Currently reading: [The Diamond Age: Or, A Young Lady's Illustrated Primer](https://en.wikipedia.org/wiki/The_Diamond_Age) by [Neal Stephenson](https://en.wikipedia.org/wiki/Neal_Stephenson)
