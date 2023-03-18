@@ -1,7 +1,7 @@
 /*
 Sticky Table-of-Contents, adapted from https://github.com/Th1nhNg0/th1nhng0.vercel.app/blob/5e73a420828d82f01e7147512a2c3273c4ec19f8/layouts/PostLayout.js
 */
-import Link from 'next/link'
+import Link from '@/components/Link'
 import { useRef, useEffect, useState } from 'react'
 
 const getTocState = (toc) => {
