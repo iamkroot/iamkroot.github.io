@@ -5,8 +5,7 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import formatDate from '@/lib/utils/formatDate'
-import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 const MAX_DISPLAY = 5
 
@@ -17,33 +16,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }) {
-  const [loaded, setLoaded] = useState(false)
-  const router = useRouter()
-  useEffect(() => {
-    const { pathname } = router
-    // conditional redirect
-    if (pathname == '/') {
-      console.log(`Pathname ${pathname}`)
-      // with router.push the page may be added to history
-      // the browser on history back will  go back to this page and then forward again to the redirected page
-      // you can prevent this behaviour using location.replace
-      // Router.push('/about')
-      location.replace('/about')
-    } else {
-      console.log(`else Pathname ${pathname}`)
-
-      setLoaded(true)
-    }
-  }, [router])
-
-  if (!loaded) {
-    return <div></div> //show nothing or a loader
-  }
-  return (
-    <p>
-      You will see this page only if pathname !== "/" , <br />
-    </p>
-  )
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
