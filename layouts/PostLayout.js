@@ -7,6 +7,7 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+import TocComponent from '@/components/StickyTOC'
 
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
 const pageUrl = (slug) => encodeURIComponent(`${siteMetadata.siteUrl}/blog/${slug}`)
@@ -17,7 +18,7 @@ const hnUrl = (slug, title) =>
 
 const postDateTemplate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
-export default function PostLayout({ frontMatter, authorDetails, next, prev, children }) {
+export default function PostLayout({ frontMatter, authorDetails, next, prev, children, toc }) {
   const { slug, fileName, date, title, images, tags } = frontMatter
 
   return (
@@ -129,13 +130,16 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                   </div>
                 )}
               </div>
-              <div className="pt-4 xl:pt-8">
+              <div className="sticky top-0 pt-4 xl:pt-8">
                 <Link
                   href="/blog"
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                 >
                   &larr; Back to the blog
                 </Link>
+                <div className="hidden md:block">
+                  <TocComponent toc={toc} />
+                </div>
               </div>
             </footer>
           </div>
