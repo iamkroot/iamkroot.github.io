@@ -8,6 +8,7 @@ import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import TocComponent from '@/components/StickyTOC'
+import SocialURLs from '@/components/SocialURLs'
 
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
 const pageUrl = (slug) => encodeURIComponent(`${siteMetadata.siteUrl}/blog/${slug}`)
@@ -19,7 +20,7 @@ const hnUrl = (slug, title) =>
 const postDateTemplate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
 export default function PostLayout({ frontMatter, authorDetails, next, prev, children, toc }) {
-  const { slug, fileName, date, title, images, tags } = frontMatter
+  const { slug, fileName, date, title, images, tags, hn } = frontMatter
 
   return (
     <SectionContainer>
@@ -79,13 +80,14 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
               <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">{children}</div>
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
-                <Link href={twitterUrl(slug)} rel="nofollow">
-                  {'Discuss on Twitter'}
-                </Link>
+                <SocialURLs postUrl={twitterUrl(slug)} postText={'Discuss on Twitter'} />
                 {` • `}
-                <Link href={hnUrl(slug, title)} rel="nofollow">
-                  {'Post to HackerNews'}
-                </Link>
+                <SocialURLs
+                  urls={hn}
+                  postUrl={hnUrl(slug, title)}
+                  postText={'Post to HackerNews'}
+                  discussedText={'Discussed on Hackernews'}
+                />
                 {` • `}
                 <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
               </div>
