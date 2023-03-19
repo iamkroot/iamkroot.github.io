@@ -8,6 +8,7 @@ summary: "Digs into a unexpected memory leak when using Zig's FixedBufferAllocat
 images: []
 authors: ['default']
 layout: PostLayout
+hn: ['https://news.ycombinator.com/item?id=35216075']
 ---
 
 This is a small exposition on an unexpected "memory leak" I encountered when writing a Zig program. We will mainly focus on a very simple allocation pattern and see how it causes a "leak" (you will see why I am putting it in quotes) when using a particular allocator from Zig's stdlib.
