@@ -24,6 +24,8 @@ input:-webkit-autofill:focus {
   transition: background-color 600000s 0s, color 600000s 0s;
 }
 
-code {
-  word-break: break-all;
+@media (max-width: 640px) {
+  code {
+    word-break: break-all;
+  }
 }
