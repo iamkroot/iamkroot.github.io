@@ -1,7 +1,7 @@
 ---
 title: 'The Curious Case of a Memory Leak in a Zig program'
 date: '2023-03-18'
-lastmod: '2023-03-18'
+lastmod: '2023-03-19'
 tags: ['zig', 'debugging', 'memory']
 draft: false
 summary: "Digs into a unexpected memory leak when using Zig's FixedBufferAllocator"
@@ -282,7 +282,7 @@ step2
 
 Since we always allocated `new_cells` _before_ freeing `grid.cells`, the new hashset was always placed after the old one in the backing buffer. The calls to `grid.cells.deinit()` were thus hitting the no-op case of `free` since `grid.cells` was not the last allocation in that buffer.
 
-There you have it...
+There you have it... `FixedBufferAllocator` is implemented as a [Bump pointer allocator](https://os.phil-opp.com/allocator-designs/#bump-allocator).
 
 # Fix
 
