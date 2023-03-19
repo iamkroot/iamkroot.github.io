@@ -139,7 +139,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                 >
                   &larr; Back to the blog
                 </Link>
-                <div className="hidden md:block">
+                <div className="hidden xl:block">
                   <TocComponent toc={toc} />
                 </div>
               </div>
