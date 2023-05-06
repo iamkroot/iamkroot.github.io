@@ -24,4 +24,4 @@ The following Github-style graph shows the time devoted to reading novels on a d
 
 <ReadingActivity rawCalData={props.rawCalData} />
 
-Currently reading: [The Diamond Age: Or, A Young Lady's Illustrated Primer](https://en.wikipedia.org/wiki/The_Diamond_Age) by [Neal Stephenson](https://en.wikipedia.org/wiki/Neal_Stephenson)
+Currently reading: [Steppenwolf](<https://en.wikipedia.org/wiki/Steppenwolf_(novel)>) by [Hermann Hesse](https://en.wikipedia.org/wiki/Hermann_Hesse)
