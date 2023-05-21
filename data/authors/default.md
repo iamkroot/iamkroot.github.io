@@ -24,4 +24,4 @@ The following Github-style graph shows the time devoted to reading novels on a d
 
 <ReadingActivity rawCalData={props.rawCalData} />
 
-Currently reading: [Steppenwolf](<https://en.wikipedia.org/wiki/Steppenwolf_(novel)>) by [Hermann Hesse](https://en.wikipedia.org/wiki/Hermann_Hesse)
+Currently reading: [Blindsight](<https://en.wikipedia.org/wiki/Blindsight_(Watts_novel)>) by [Peter Watts](<https://en.wikipedia.org/wiki/Peter_Watts_(author)>).
