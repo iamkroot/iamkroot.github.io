@@ -88,7 +88,7 @@ fn main() !void {
 
 # The `step` function
 
-The core part is a repated call to the `step` function. It takes the grid state (set of active cells) and basically applies the interaction rules to update the locations of active cells.
+The core part is a repeated call to the `step` function. It takes the grid state (set of active cells) and basically applies the interaction rules to update the locations of active cells.
 
 ```zig
 fn step(grid: *Grid) !void {
