@@ -86,9 +86,9 @@ const ReadingActivity = (props) => {
     },
   }
   return (
-    <div className="flex overflow-x-scroll pt-4">
+    <div className="overflow-x-scroll">
       <Calendar
-        style={{ minWidth: '40rem' }}
+        style={{ minWidth: '40rem', paddingTop: '10px' }}
         data={data}
         theme={theme}
         labels={labels}
