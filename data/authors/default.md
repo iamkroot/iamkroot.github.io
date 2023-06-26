@@ -24,4 +24,4 @@ The following Github-style graph shows the time devoted to reading novels on a d
 
 <ReadingActivity rawCalData={props.rawCalData} />
 
-Currently reading: [Blindsight](<https://en.wikipedia.org/wiki/Blindsight_(Watts_novel)>) by [Peter Watts](<https://en.wikipedia.org/wiki/Peter_Watts_(author)>).
+Currently reading: [Echopraxia](<https://en.wikipedia.org/wiki/Echopraxia_(novel)>) by [Peter Watts](<https://en.wikipedia.org/wiki/Peter_Watts_(author)>).
