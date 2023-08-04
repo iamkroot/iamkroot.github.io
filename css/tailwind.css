@@ -29,3 +29,7 @@ input:-webkit-autofill:focus {
     word-break: break-all;
   }
 }
+
+img[alt="It's free real estate meme"] {
+  max-width: min(100%, 500px);
+}
