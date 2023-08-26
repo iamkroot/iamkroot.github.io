@@ -1,8 +1,8 @@
 ---
 name: Krut Patel
 avatar: /static/images/krut_patel_570x570.webp
-occupation: Research Fellow
-company: Microsoft Research
+occupation: MS CS
+company: UIUC
 email: kroot.patel@gmail.com
 twitter: https://twitter.com/krutpatel99
 github: https://github.com/iamkroot
@@ -10,7 +10,7 @@ github: https://github.com/iamkroot
 
 Hey! I'm Krut Patel. Welcome to my little corner of the internet!
 
-I'm currently a Research Fellow at [Microsoft Research India](https://www.microsoft.com/en-us/research/lab/microsoft-research-india/), building a system for accelerating Big Data queries using Just-In-Time compilation. Prior to this, I was a summer intern with the [DIAS Lab](https://www.epfl.ch/labs/dias/) at EPFL, Switzerland, where I developed a scalable CSV Parser in a JIT-compiled OLAP database system.
+I am currently pursuing a MS CS degree from UIUC. Prior to this, I was a Research Fellow at [Microsoft Research India](https://www.microsoft.com/en-us/research/lab/microsoft-research-india/), building a native query execution engine for accelerating Big Data queries using Just-In-Time compilation. Previously, I interned with the [DIAS Lab](https://www.epfl.ch/labs/dias/) at EPFL, Switzerland, where I developed a scalable CSV Parser in a JIT-compiled OLAP database system.
 
 I love pushing the boundaries of computing performance, and am exploring the fields of Compilers, Databases and Computer Systems.
 
@@ -24,4 +24,4 @@ The following Github-style graph shows the time devoted to reading novels on a d
 
 <ReadingActivity rawCalData={props.rawCalData} />
 
-Currently reading: [Echopraxia](<https://en.wikipedia.org/wiki/Echopraxia_(novel)>) by [Peter Watts](<https://en.wikipedia.org/wiki/Peter_Watts_(author)>).
+Currently reading: [One Hundred Years of Solitude](https://en.wikipedia.org/wiki/One_Hundred_Years_of_Solitude) by [Gabriel García Márquez](https://en.wikipedia.org/wiki/Gabriel_Garc%C3%ADa_M%C3%A1rquez) (thanks Kabir for the thoughtful gift!)
