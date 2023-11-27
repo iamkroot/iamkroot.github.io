@@ -24,4 +24,4 @@ The following Github-style graph shows the time devoted to reading novels on a d
 
 <ReadingActivity rawCalData={props.rawCalData} />
 
-Currently reading: [One Hundred Years of Solitude](https://en.wikipedia.org/wiki/One_Hundred_Years_of_Solitude) by [Gabriel García Márquez](https://en.wikipedia.org/wiki/Gabriel_Garc%C3%ADa_M%C3%A1rquez) (thanks Kabir for the thoughtful gift!)
+Currently reading: [Anathem](https://en.wikipedia.org/wiki/Anathem) by [Neal Stephenson](https://en.wikipedia.org/wiki/Neal_Stephenson)
