@@ -49,7 +49,7 @@ async function generateRSS(config, allBlogs, page = 'feed.xml') {
         post.tags.map((t) => GithubSlugger.slug(t)).includes(tag)
       )
       if (filteredPosts.length === 0) {
-        continue;
+        continue
       }
       const rss = generateRss(config, filteredPosts, `tags/${tag}/${page}`)
       const rssPath = path.join('public', 'tags', tag)
@@ -60,7 +60,10 @@ async function generateRSS(config, allBlogs, page = 'feed.xml') {
 }
 
 const rss = () => {
-  generateRSS(siteMetadata, [...allBlogs, ...allTILs.map(til => ({ ...til, title: `TIL: ${til.title}` }))])
+  generateRSS(siteMetadata, [
+    ...allBlogs,
+    ...allTILs.map((til) => ({ ...til, title: `TIL: ${til.title}` })),
+  ])
   console.log('RSS feed generated...')
 }
 export default rss
