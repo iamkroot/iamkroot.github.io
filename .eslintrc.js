@@ -21,6 +21,10 @@ module.exports = {
     project: true,
     tsconfigRootDir: __dirname,
   },
+  overrides: [{
+    extends: ['plugin:@typescript-eslint/disable-type-checked'],
+    files: ['./**/*.js'],
+  }],
   rules: {
     'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',

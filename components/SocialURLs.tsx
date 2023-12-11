@@ -1,10 +1,10 @@
 import Link from '@/components/Link'
 
 interface Props {
-  urls?: string[],
-  postUrl: string,
-  postText: string,
-  discussedText?: string,
+  urls?: string[]
+  postUrl: string
+  postText: string
+  discussedText?: string
 }
 
 export default function SocialURLs({ urls, postUrl, postText, discussedText }: Props) {

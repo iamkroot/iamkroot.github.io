@@ -10,7 +10,7 @@ import PostSimple from '@/layouts/PostSimple'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
-import {extract} from "sentence-extractor";
+import { extract } from 'sentence-extractor'
 
 export async function generateMetadata({
   params,
@@ -40,7 +40,7 @@ export async function generateMetadata({
       url: img.includes('http') ? img : siteMetadata.siteUrl + img,
     }
   })
-  const firstLine = (extract(post.body.raw)[0] || "").trim() as string
+  const firstLine = (extract(post.body.raw)[0] || '').trim() as string
 
   return {
     title: post.title,

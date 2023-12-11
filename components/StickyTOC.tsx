@@ -5,7 +5,7 @@ import Link from '@/components/Link'
 import { useRef, useEffect, useState } from 'react'
 
 const getTocState = (toc) => {
-  let etoc = toc.map((e) => ({ ...e, children: [] }))
+  const etoc = toc.map((e) => ({ ...e, children: [] }))
   for (let i = etoc.length - 1; i >= 0; i--) {
     if (etoc[i].depth == 1) continue
     for (let j = i; j >= 0; j--) {
@@ -23,10 +23,10 @@ function TocComponent({ toc }) {
   useIntersectionObserver(setActiveId)
   const TOC = getTocState(toc).filter((e) => e.depth == 1)
 
-  let RenderToc = ({ item, activeId }) => {
+  const RenderToc = ({ item, activeId }) => {
     const isActive = (e) => {
       if ('#' + activeId === e.url) return true
-      for (let i of e.children) if (isActive(i)) return true
+      for (const i of e.children) if (isActive(i)) return true
       return false
     }
     return item.map((e, i) => (
@@ -41,7 +41,7 @@ function TocComponent({ toc }) {
           </p>
         </Link>
         {isActive(e) && e.children.length > 0 && (
-          <div className="mt-1 ml-4 space-y-1">
+          <div className="ml-4 mt-1 space-y-1">
             <RenderToc item={e.children} activeId={activeId} />
           </div>
         )}
@@ -66,7 +66,7 @@ const useIntersectionObserver = (setActiveId) => {
         return map
       }, headingElementsRef.current)
 
-      const visibleHeadings = []
+      const visibleHeadings: { target: { id: number }; id: number }[] = []
       Object.keys(headingElementsRef.current).forEach((key) => {
         const headingElement = headingElementsRef.current[key]
         if (headingElement.isIntersecting) visibleHeadings.push(headingElement)
@@ -78,7 +78,7 @@ const useIntersectionObserver = (setActiveId) => {
         setActiveId(visibleHeadings[0].target.id)
       } else if (visibleHeadings.length > 1) {
         const sortedVisibleHeadings = visibleHeadings.sort(
-          (a, b) => getIndexFromId(a.target.id) > getIndexFromId(b.target.id)
+          (a, b) => getIndexFromId(a.target.id) - getIndexFromId(b.target.id)
         )
         setActiveId(sortedVisibleHeadings[0].target.id)
       }

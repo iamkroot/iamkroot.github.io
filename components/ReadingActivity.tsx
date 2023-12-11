@@ -2,11 +2,17 @@
 'use client'
 
 import React from 'react'
-import ActivityCalendar, { Activity, ColorScale, Labels, Level, ThemeInput } from 'react-activity-calendar'
+import ActivityCalendar, {
+  Activity,
+  ColorScale,
+  Labels,
+  Level,
+  ThemeInput,
+} from 'react-activity-calendar'
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import { readStat } from ".contentlayer/generated";
+import { readStat } from '.contentlayer/generated'
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 
 const RANGES = [0, 15 * 60, 45 * 60, 2 * 60 * 60]
@@ -22,7 +28,7 @@ const valueToLevel = (value: number) => {
 }
 
 const readCalData = () => {
-  let days: Activity[] = []
+  const days: Activity[] = []
   const now = dayjs()
   const nowDate = now.toDate().toISOString()
   const lastyear = now.subtract(1, 'year')
@@ -55,7 +61,13 @@ const readCalData = () => {
   return { days, totalReadTime }
 }
 
-export const DEFAULT_LIGHT_THEME: ColorScale = ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
+export const DEFAULT_LIGHT_THEME: ColorScale = [
+  '#ebedf0',
+  '#9be9a8',
+  '#40c463',
+  '#30a14e',
+  '#216e39',
+]
 
 export const DEFAULT_DARK_THEME: ColorScale = [
   '#282828',
@@ -69,13 +81,13 @@ const ReadingActivity = () => {
   dayjs.extend(duration)
   dayjs.extend(relativeTime)
 
-  let { days: data, totalReadTime } = readCalData()
-  let readTimeStr = dayjs.duration(totalReadTime, 'seconds').humanize()
+  const { days: data, totalReadTime } = readCalData()
+  const readTimeStr = dayjs.duration(totalReadTime, 'seconds').humanize()
 
-  let labels: Labels = {
+  const labels: Labels = {
     totalCount: `${readTimeStr} read in the last year.`,
   }
-  let theme: ThemeInput = { light: DEFAULT_LIGHT_THEME, dark: DEFAULT_DARK_THEME }
+  const theme: ThemeInput = { light: DEFAULT_LIGHT_THEME, dark: DEFAULT_DARK_THEME }
   return (
     <div>
       <ActivityCalendar
