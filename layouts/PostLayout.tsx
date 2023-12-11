@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog, Authors } from 'contentlayer/generated'
+import type { Blog, Authors, TIL } from 'contentlayer/generated'
 import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
@@ -26,7 +26,7 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
 }
 
 interface LayoutProps {
-  content: CoreContent<Blog>
+  content: CoreContent<Blog | TIL>
   authorDetails: CoreContent<Authors>[]
   next?: { path: string; title: string }
   prev?: { path: string; title: string }
@@ -34,8 +34,7 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
-  // TODO: Add HN link without breaking types
-  const { filePath, path, slug, date, title, tags } = content
+  const { filePath, path, slug, date, title, tags, hn } = content
   const basePath = path.split('/')[0]
 
   return (
@@ -91,7 +90,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 <SocialURLs postUrl={twitterUrl(slug)} postText={'Discuss on Twitter'} />
                 {` • `}
                 <SocialURLs
-                  // urls={""}
+                  urls={hn}
                   postUrl={hnUrl(slug, title)}
                   postText={'Post to HackerNews'}
                   discussedText={'Discussed on Hackernews'}

@@ -10562,6 +10562,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sentence-extractor@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "sentence-extractor@npm:1.0.7"
+  checksum: 14d078e8c5c13172c0c6c326c3240698b7b224053686b52ae8cea43d3126bc5aec795b6ebb27f1953533db0eccb8ab438c1c1e45e23c2a9df83441f2e8fc256d
+  languageName: node
+  linkType: hard
+
 "set-function-length@npm:^1.1.1":
   version: 1.1.1
   resolution: "set-function-length@npm:1.1.1"
@@ -11099,6 +11106,7 @@ __metadata:
     remark: ^14.0.2
     remark-gfm: ^3.0.1
     remark-math: ^5.1.1
+    sentence-extractor: ^1.0.7
     tailwindcss: ^3.3.3
     typescript: ^5.1.3
     unist-util-visit: ^4.1.0
