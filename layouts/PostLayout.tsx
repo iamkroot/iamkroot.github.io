@@ -1,3 +1,6 @@
+// client side due to the TocComponent.
+// didn't see much of a hit due to adding this directive.
+'use client'
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors, TIL } from 'contentlayer/generated'
@@ -10,6 +13,7 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import SocialURLs from '@/components/SocialURLs'
+import TocComponent from '@/components/StickyTOC'
 
 const pageUrl = (slug) => encodeURIComponent(`${siteMetadata.siteUrl}/blog/${slug}`)
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/master/data/${path}`
@@ -34,7 +38,7 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
-  const { filePath, path, slug, date, title, tags, hn } = content
+  const { filePath, path, slug, date, title, tags, hn, toc } = content
   const basePath = path.split('/')[0]
 
   return (
@@ -146,7 +150,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   </div>
                 )}
               </div>
-              <div className="pt-4 xl:pt-8">
+              <div className="sticky top-0 pt-4 xl:pt-8">
                 <Link
                   href={`/${basePath}`}
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
@@ -154,6 +158,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 >
                   &larr; Back to the blog
                 </Link>
+                <div className="hidden xl:block">
+                  <TocComponent toc={toc} />
+                </div>
               </div>
             </footer>
           </div>
