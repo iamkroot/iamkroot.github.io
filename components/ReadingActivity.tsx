@@ -1,24 +1,28 @@
+// TODO: Make this server-side?
+'use client'
+
 import React from 'react'
-import ActivityCalendar from 'react-activity-calendar'
+import ActivityCalendar, { Activity, ColorScale, Labels, Level, ThemeInput } from 'react-activity-calendar'
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import { readStat } from ".contentlayer/generated";
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 
 const RANGES = [0, 15 * 60, 45 * 60, 2 * 60 * 60]
 
-const valueToLevel = (value) => {
+const valueToLevel = (value: number) => {
   for (let i = 0; i < RANGES.length; i++) {
     const element = RANGES[i]
     if (value <= element) {
-      return i
+      return i as Level
     }
   }
-  return RANGES.length
+  return RANGES.length as Level
 }
 
-const readCalData = (data) => {
-  let days = []
+const readCalData = () => {
+  let days: Activity[] = []
   const now = dayjs()
   const nowDate = now.toDate().toISOString()
   const lastyear = now.subtract(1, 'year')
@@ -27,7 +31,7 @@ const readCalData = (data) => {
   let foundToday = false
   let totalReadTime = 0
 
-  for (const [date, value] of Object.entries(data)) {
+  for (const [date, value] of Object.entries(readStat.stats as { [date: string]: number })) {
     if (date < year) {
       continue
     }
@@ -51,9 +55,9 @@ const readCalData = (data) => {
   return { days, totalReadTime }
 }
 
-export const DEFAULT_LIGHT_THEME = ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
+export const DEFAULT_LIGHT_THEME: ColorScale = ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
 
-export const DEFAULT_DARK_THEME = [
+export const DEFAULT_DARK_THEME: ColorScale = [
   '#282828',
   'rgba(79, 140, 201, .25)',
   'rgba(79, 140, 201, .50)',
@@ -61,21 +65,20 @@ export const DEFAULT_DARK_THEME = [
   '#4f8cc9',
 ]
 
-const ReadingActivity = (props) => {
+const ReadingActivity = () => {
   dayjs.extend(duration)
   dayjs.extend(relativeTime)
 
-  let { days: data, totalReadTime } = readCalData(props.rawCalData)
+  let { days: data, totalReadTime } = readCalData()
   let readTimeStr = dayjs.duration(totalReadTime, 'seconds').humanize()
 
-  let labels = {
+  let labels: Labels = {
     totalCount: `${readTimeStr} read in the last year.`,
   }
-  let theme = { light: DEFAULT_LIGHT_THEME, dark: DEFAULT_DARK_THEME }
+  let theme: ThemeInput = { light: DEFAULT_LIGHT_THEME, dark: DEFAULT_DARK_THEME }
   return (
-    <div className="overflow-x-scroll">
+    <div>
       <ActivityCalendar
-        style={{ minWidth: '40rem', paddingTop: '10px' }}
         data={data}
         theme={theme}
         labels={labels}
@@ -90,7 +93,7 @@ const ReadingActivity = (props) => {
           })
         }
       />
-      {/* <ReactTooltip id="react-tooltip" /> */}
+      <ReactTooltip id="react-tooltip" />
     </div>
   )
 }

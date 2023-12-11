@@ -164,9 +164,25 @@ export const Authors = defineDocumentType(() => ({
   computedFields,
 }))
 
+
+export const ReadStats = defineDocumentType(() => ({
+  name: 'ReadStats',
+  filePathPattern: 'read_stats.json',
+  contentType: 'data',
+  fields: {
+    stats: {
+      type: "json",
+      default: {},
+      description: "Keys are dates, values are seconds of read time on that day",
+      required: true
+    },
+  },
+  isSingleton: true,
+}))
+
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Authors, Til],
+  documentTypes: [Blog, Authors, Til, ReadStats],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [
