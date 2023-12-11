@@ -22,11 +22,11 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
+        sans: ['Outfit', 'var(--font-space-grotesk)', ...fontFamily.sans],
       },
       colors: {
-        primary: colors.pink,
-        gray: colors.gray,
+        primary: colors.teal,
+        gray: colors.neutral,
       },
       typography: ({ theme }) => ({
         DEFAULT: {
@@ -34,16 +34,18 @@ module.exports = {
             a: {
               color: theme('colors.primary.500'),
               '&:hover': {
-                color: `${theme('colors.primary.600')}`,
+                color: `${theme('colors.primary.600')} !important`,
               },
               code: { color: theme('colors.primary.400') },
             },
             'h1,h2': {
               fontWeight: '700',
               letterSpacing: theme('letterSpacing.tight'),
+              color: theme('colors.gray.900'),
             },
             h3: {
               fontWeight: '600',
+              color: theme('colors.gray.900'),
             },
             code: {
               color: theme('colors.indigo.500'),
@@ -52,6 +54,7 @@ module.exports = {
         },
         invert: {
           css: {
+            color: theme('colors.gray.300'),
             a: {
               color: theme('colors.primary.500'),
               '&:hover': {

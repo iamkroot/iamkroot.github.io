@@ -1,0 +1,22 @@
+---
+title: 'CMake uses -NOTFOUND for boolean False'
+date: '2023-06-25'
+type: 'Programming'
+draft: false
+tags: ['c++', 'languages']
+---
+
+CMake has a... unique approach to booleans. Any value that ends with `-NOTFOUND` evaluates to `False`.
+
+> False if the constant is 0, OFF, NO, FALSE, N, IGNORE, NOTFOUND, the empty string, or ends in the suffix -NOTFOUND.
+
+- [CMake docs](https://cmake.org/cmake/help/v3.27/command/if.html#constant)
+
+```cmake
+set(some_var xyz-NOTFOUND)
+if(NOT some_var)
+    message(STATUS "It's-a me, falsio!")
+endif()
+```
+
+Source: [Everything You Never Wanted to Know About CMake (Redux)](https://izzys.casa/2023/06/everything-you-never-wanted-to-know-about-cmake-redux/)

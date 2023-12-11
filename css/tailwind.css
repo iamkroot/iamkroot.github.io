@@ -33,3 +33,13 @@ input:-webkit-autofill:focus {
 .katex-display {
   overflow: auto hidden;
 }
+
+@media (max-width: 640px) {
+  code {
+    word-break: break-all;
+  }
+}
+
+img[alt="It's free real estate meme"] {
+  max-width: min(100%, 500px);
+}
