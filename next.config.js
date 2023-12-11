@@ -64,7 +64,6 @@ module.exports = () => {
     eslint: {
       dirs: ['app', 'components', 'layouts', 'scripts'],
     },
-    basePath: "/iamkroot.github.io",
     output: 'export',
     images: {
       unoptimized: true,
