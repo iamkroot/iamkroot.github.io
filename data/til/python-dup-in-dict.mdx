@@ -1,0 +1,24 @@
+---
+title: 'You can have "duplicate" keys in Python dicts'
+date: '2023-11-04'
+type: 'Programming'
+draft: true
+tags: ['python', 'languages']
+---
+
+Lemma 1: You can override `__hash__` for any object.
+
+Lemma 2: You can also override the `__str__` and `__repr__` methods.
+
+Combine these two, and you can end up in a situation like this-
+```python
+...
+>>> mydict
+{"a": 1, "b": 2, "a": 3}  # notice something funny?
+```
+
+Behind the scenes, we have _two_ `a` objects, each with a different hash, but with the same stringified value (`"a"`).
+
+This one bit me as I was wading chest deep through the debugging session of a bug.
+
+More info at: [Multiple identical keys in a Python dict - yes, you can!](http://www.wellho.net/mouth/3934_Multiple-identical-keys-in-a-Python-dict-yes-you-can-.html)
