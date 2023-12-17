@@ -43,10 +43,10 @@ export async function generateMetadata({
   const firstLine = (extract(post.body.raw)[0] || '').trim() as string
 
   return {
-    title: post.title,
+    title: "TIL: " + post.title,
     description: firstLine,
     openGraph: {
-      title: post.title,
+      title: "TIL: " + post.title,
       description: firstLine,
       siteName: siteMetadata.title,
       locale: 'en_US',
@@ -59,7 +59,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
+      title: "TIL: " + post.title,
       description: firstLine,
       images: imageList,
     },
@@ -97,6 +97,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
       name: author.name,
     }
   })
+  mainContent.title = "TIL: " + mainContent.title
 
   return (
     <>
