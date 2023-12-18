@@ -11,7 +11,7 @@ import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
 import { extract } from 'sentence-extractor'
-import { addTilPrefix } from "_lib/add_til";
+import { addTilPrefix } from '@/lib/add_til'
 
 export async function generateMetadata({
   params,

@@ -6,7 +6,7 @@ import siteMetadata from '../data/siteMetadata.js'
 import tagData from '../app/tag-data.json' assert { type: 'json' }
 import { allBlogs, allTILs } from '../.contentlayer/generated/index.mjs'
 import { sortPosts } from 'pliny/utils/contentlayer.js'
-import { addTilPrefix } from '_lib/add_til.js'
+import { addTilPrefix } from '@/lib/add_til.js'
 
 const generateRssItem = (config, post) => `
   <item>
