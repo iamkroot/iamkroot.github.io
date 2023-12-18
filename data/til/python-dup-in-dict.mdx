@@ -1,8 +1,8 @@
 ---
 title: 'You can have "duplicate" keys in Python dicts'
 date: '2023-11-04'
-type: 'Programming'
-draft: true
+category: 'Programming'
+draft: false
 tags: ['python', 'languages']
 ---
 
@@ -17,8 +17,26 @@ Combine these two, and you can end up in a situation like this-
 {"a": 1, "b": 2, "a": 3}  # notice something funny?
 ```
 
-Behind the scenes, we have _two_ `a` objects, each with a different hash, but with the same stringified value (`"a"`).
+Behind the scenes, we have _two_ `a` objects, each with a different hash, but with the same stringified value (`"a"`). This issue becomes particularly relevant when using dataclasses with inheritance:
 
-This one bit me as I was wading chest deep through the debugging session of a bug.
+```python
+@dataclass(unsafe_hash=True)
+class FunkyStr:
+    val: str
+    def __repr__(self):
+        return self.val
+
+@dataclass(unsafe_hash=True, repr=False)
+class SubclassStr(FunkyStr):
+    # no extra members, all I wanted
+    pass
+
+mydict = {FunkyStr("a"): 1, FunkyStr("b"): 2, SubclassStr("a"): 3}
+print(mydict)  # gives {"a": 1, "b": 2, "a": 3}
+```
+
+Both the `a` objects have different hashes because they are instances of different classes. The real title of this post could have been- Python hashing is [nominal](https://en.wikipedia.org/wiki/Nominal_type_system), not structural! (but that's not clickbait-y enough)
+
+To be honest - in the above example, the real crime is abusing `__repr__` to return the internal value. See [docs](https://docs.python.org/3/reference/datamodel.html#object.__repr__) for correct usage.
 
 More info at: [Multiple identical keys in a Python dict - yes, you can!](http://www.wellho.net/mouth/3934_Multiple-identical-keys-in-a-Python-dict-yes-you-can-.html)
