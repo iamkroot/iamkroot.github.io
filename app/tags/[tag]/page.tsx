@@ -36,7 +36,7 @@ export default function TagPage({ params }: { params: { tag: string } }) {
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
   const filteredPosts = allCoreContent(
     sortPosts(
-      [...allBlogs, ...allTILs.map(post => (post.title = "TIL: " + post.title, post))].filter(
+      [...allBlogs, ...allTILs.map((post) => ((post.title = 'TIL: ' + post.title), post))].filter(
         (post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)
       )
     )

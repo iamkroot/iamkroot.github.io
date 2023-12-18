@@ -69,7 +69,8 @@ export default function ListLayout({
 }: ListLayoutProps) {
   const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts.filter((post) => {
-    const searchContent = post.title + ('summary' in post ? post.summary : "") + post.tags?.join(' ')
+    const searchContent =
+      post.title + ('summary' in post ? post.summary : '') + post.tags?.join(' ')
     return searchContent.toLowerCase().includes(searchValue.toLowerCase())
   })
 
@@ -116,8 +117,8 @@ export default function ListLayout({
           {displayPosts.map((post) => {
             const { path, date, title, tags } = post
             const summary = (post as CoreContent<Blog>).summary
-                  ? (post as CoreContent<Blog>).summary
-                  : null
+              ? (post as CoreContent<Blog>).summary
+              : null
             return (
               <li key={path} className="py-4">
                 <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
