@@ -6,6 +6,7 @@ import { allBlogs, allTILs } from 'contentlayer/generated'
 import tagData from 'app/tag-data.json'
 import { genPageMetadata } from 'app/seo'
 import { Metadata } from 'next'
+import { addTilPrefix } from '_lib/add_til'
 
 export async function generateMetadata({ params }: { params: { tag: string } }): Promise<Metadata> {
   const tag = decodeURI(params.tag)
@@ -36,7 +37,7 @@ export default function TagPage({ params }: { params: { tag: string } }) {
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
   const filteredPosts = allCoreContent(
     sortPosts(
-      [...allBlogs, ...allTILs.map((post) => ((post.title = 'TIL: ' + post.title), post))].filter(
+      [...allBlogs, ...allTILs.map((post) => ((post.title = addTilPrefix(post.title)), post))].filter(
         (post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)
       )
     )

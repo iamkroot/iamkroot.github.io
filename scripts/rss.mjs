@@ -6,6 +6,7 @@ import siteMetadata from '../data/siteMetadata.js'
 import tagData from '../app/tag-data.json' assert { type: 'json' }
 import { allBlogs, allTILs } from '../.contentlayer/generated/index.mjs'
 import { sortPosts } from 'pliny/utils/contentlayer.js'
+import { addTilPrefix } from '_lib/add_til.js'
 
 const generateRssItem = (config, post) => `
   <item>
@@ -62,7 +63,7 @@ async function generateRSS(config, allBlogs, page = 'feed.xml') {
 const rss = () => {
   generateRSS(siteMetadata, [
     ...allBlogs,
-    ...allTILs.map((til) => ({ ...til, title: `TIL: ${til.title}` })),
+    ...allTILs.map((til) => ({ ...til, title: addTilPrefix(til.title) })),
   ])
   console.log('RSS feed generated...')
 }

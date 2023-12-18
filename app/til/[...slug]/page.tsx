@@ -11,6 +11,7 @@ import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
 import { extract } from 'sentence-extractor'
+import { addTilPrefix } from "_lib/add_til";
 
 export async function generateMetadata({
   params,
@@ -43,10 +44,10 @@ export async function generateMetadata({
   const firstLine = (extract(post.body.raw)[0] || '').trim() as string
 
   return {
-    title: 'TIL: ' + post.title,
+    title: addTilPrefix(post.title),
     description: firstLine,
     openGraph: {
-      title: 'TIL: ' + post.title,
+      title: addTilPrefix(post.title),
       description: firstLine,
       siteName: siteMetadata.title,
       locale: 'en_US',
@@ -59,7 +60,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'TIL: ' + post.title,
+      title: addTilPrefix(post.title),
       description: firstLine,
       images: imageList,
     },
@@ -97,7 +98,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
       name: author.name,
     }
   })
-  mainContent.title = 'TIL: ' + mainContent.title
+  mainContent.title = addTilPrefix(mainContent.title)
 
   return (
     <>
