@@ -21,6 +21,9 @@ module.exports = {
         13: '3.25rem',
         14: '3.5rem',
       },
+      screens: {
+        'xs3': '288px',
+      },
       fontFamily: {
         sans: ['Outfit', 'var(--font-space-grotesk)', ...fontFamily.sans],
       },
