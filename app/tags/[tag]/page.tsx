@@ -39,7 +39,7 @@ export default function TagPage({ params }: { params: { tag: string } }) {
     sortPosts(
       [
         ...allBlogs,
-        ...allTILs.map((post) => ((post.title = addTilPrefix(post.title)), post)),
+        ...allTILs.map((post) => ({ ...post, title: addTilPrefix(post.title) })),
       ].filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag))
     )
   )
