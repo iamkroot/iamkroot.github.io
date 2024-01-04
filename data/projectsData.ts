@@ -22,6 +22,12 @@ const projectsData: Projects[] = [
     status: 'archived',
   },
   {
+    title: 'YAAI',
+    description: 'Yet Another Aria2 Integrator - Use aria2 to intercept Firefox downloads"
+    href: 'https://github.com/iamkroot/yaai',
+    status: 'passive',
+  },
+  {
     title: 'ked',
     description: 'A Text Editor',
     href: 'https://github.com/iamkroot/ked',
