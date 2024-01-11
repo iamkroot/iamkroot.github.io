@@ -1,0 +1,13 @@
+---
+title: '`~foo` expands to the HOME dir of that user in Bash'
+date: '2024-01-10'
+category: 'Programming'
+draft: false
+tags: ['bash', 'shell']
+---
+
+We know that `~` is `$HOME`, but it is more general that this. Usually, `~foo` will expand to `/home/foo`, but could be anything as configured in `/etc/passwd`
+
+_Very_ handy when dealing with multiple users.
+
+There's even more expansions like `~+/foo` and `~-N`. See [Bash manual](https://www.gnu.org/software/bash/manual/html_node/Tilde-Expansion.html) for further info.
