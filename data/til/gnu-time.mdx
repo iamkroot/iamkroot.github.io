@@ -1,0 +1,42 @@
+---
+title: 'GNU `time` can show memory usage'
+date: '2024-01-26'
+category: 'Programming'
+draft: false
+tags: ['shell', 'performance']
+---
+
+We are all used to running `time foo` to get coarse numbers on some executable's runtime. But turns out [GNU `time`](https://www.gnu.org/software/time/) util can measure much more. Here's the output for `\time -v ls`:
+
+```
+Command being timed: "ls"
+User time (seconds): 0.00
+System time (seconds): 0.00
+Percent of CPU this job got: 100%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.00
+Average shared text size (kbytes): 0
+Average unshared data size (kbytes): 0
+Average stack size (kbytes): 0
+Average total size (kbytes): 0
+Maximum resident set size (kbytes): 2176
+Average resident set size (kbytes): 0
+Major (requiring I/O) page faults: 0
+Minor (reclaiming a frame) page faults: 111
+Voluntary context switches: 1
+Involuntary context switches: 0
+Swaps: 0
+File system inputs: 0
+File system outputs: 0
+Socket messages sent: 0
+Socket messages received: 0
+Signals delivered: 0
+Page size (bytes): 4096
+Exit status: 0
+
+```
+
+RSS (memory usage), page fault count, context switches, signals — there's so much to dig into!
+
+Secondary TIL: `time` is actually a shell builtin! So you'll probably have to install GNU time if it isn't already present in your machine, and then use `\time` to invoke it.
+
+Tertiary TIL: We can use `\foo` to bypass the shell builtin and look up the executable `foo` directly!
