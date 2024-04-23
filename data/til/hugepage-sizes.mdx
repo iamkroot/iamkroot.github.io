@@ -1,0 +1,19 @@
+---
+title: 'Hugepages are 2MB and 1GB by design'
+date: '2024-04-12'
+category: 'Programming'
+draft: false
+tags: ['os', 'memory']
+---
+
+Modern CPU architectures support memory pages larger than the traditional 4KB sizes. For x86-64, they show up as 2MB and 1GB pages. This is a by-product of the multi-level paging scheme used in virtual memory today.
+
+Virtual page numbers are `9` bits each and each page table entry uses `8` bytes. So each page table itself fits on a 4K page (9-bits + 3-bits = 12-bits).
+
+4K pages use the last 12 bits (literally, 2^12 = 4K) to offset into the page.
+
+The 2MB hugepage uses the last 21 bits, essentially using up the last page table too.
+
+![Multi-level page tables](/static/images/multi_level_split.png)
+
+Source: Discussed at the [Systems Seminar](https://systems-seminar-uiuc.github.io/) at UIUC.
