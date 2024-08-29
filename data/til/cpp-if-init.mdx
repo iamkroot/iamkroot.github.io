@@ -1,0 +1,33 @@
+---
+title: 'C++17 can do variable initialization inside `if` conditions'
+date: '2024-05-23'
+category: 'Programming'
+draft: false
+tags: ['c++', 'languages']
+---
+
+This is a totally valid C++ program:
+
+```cpp
+if (auto it = m.find(10); it != m.end())
+    return it->second.size();
+```
+
+Note the two parts of the `if` condition separated by a `;`. The first part initializes the variable, and  is the actual condition to be checked.
+
+Benefits include limiting the scope of the initialized variable to the `if` body.
+
+This has interesting implications when used with RAII:
+
+```cpp
+if (std::lock_guard lock(mx); shared_flag) {
+    unsafe_ping();
+    shared_flag = false;
+}
+```
+
+The above code ensures the mutex `mx` is only locked for the body of the `if`.
+
+(code snippets taken from [documentation](https://en.cppreference.com/w/cpp/language/if))
+
+Source: Saw this feature used in the wild during my internship at AWS Redshift.
