@@ -48,9 +48,7 @@ async function generateRSS(config, allBlogs, page = 'feed.xml') {
 
   if (publishPosts.length > 0) {
     for (const tag of Object.keys(tagData)) {
-      const filteredPosts = allBlogs.filter((post) =>
-        post.tags.map((t) => slug(t)).includes(tag)
-      )
+      const filteredPosts = allBlogs.filter((post) => post.tags.map((t) => slug(t)).includes(tag))
       if (filteredPosts.length === 0) {
         continue
       }
