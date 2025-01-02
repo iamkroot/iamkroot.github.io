@@ -31,6 +31,11 @@ module.exports = {
         primary: colors.teal,
         gray: colors.neutral,
       },
+      zIndex: {
+        60: '60',
+        70: '70',
+        80: '80',
+      },
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
