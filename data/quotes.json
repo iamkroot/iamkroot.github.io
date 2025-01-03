@@ -24,5 +24,10 @@
         "media": "The Master and Margarita",
         "author": "Mikhail Bulgakov",
         "frequency": "low"
+    },
+    {
+        "text": "Have I said that time turns our lies into truths?",
+        "media": "The Book of the New Sun",
+        "author": "Gene Wolfe"
     }
 ]
