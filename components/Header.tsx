@@ -20,7 +20,7 @@ const Header = () => {
             <Logo className="h-[2rem]" />
           </div>
           {typeof siteMetadata.headerTitle === 'string' ? (
-            <div className="hidden h-6 text-2xl font-semibold text-primary-500 xs3:block">
+            <div className="text-primary-500 xs3:block hidden h-6 text-2xl font-semibold">
               {siteMetadata.headerTitle}
             </div>
           ) : (
@@ -28,15 +28,15 @@ const Header = () => {
           )}
         </div>
       </Link>
-      <div className="flex items-center space-x-4 leading-5 sm:space-x-6">
-        <div className="no-scrollbar hidden max-w-40 items-center space-x-4 overflow-x-auto sm:flex sm:space-x-6 md:max-w-72 lg:max-w-96">
+      <div className="flex items-center space-x-4 leading-5 sm:-mr-6 sm:space-x-6">
+        <div className="no-scrollbar hidden max-w-40 items-center gap-x-4 overflow-x-auto sm:flex md:max-w-72 lg:max-w-96">
           {headerNavLinks
             .filter((link) => link.href !== '/')
             .map((link) => (
               <Link
                 key={link.title}
                 href={link.href}
-                className="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
+                className="hover:text-primary-500 dark:hover:text-primary-400 m-1 font-medium text-gray-900 dark:text-gray-100"
               >
                 {link.title}
               </Link>

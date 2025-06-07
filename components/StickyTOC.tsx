@@ -41,7 +41,7 @@ function TocComponent({ toc }) {
           </p>
         </Link>
         {isActive(e) && e.children.length > 0 && (
-          <div className="ml-4 mt-1 space-y-1">
+          <div className="mt-1 ml-4 space-y-1">
             <RenderToc item={e.children} activeId={activeId} />
           </div>
         )}

@@ -2,13 +2,7 @@
 'use client'
 
 import React from 'react'
-import ActivityCalendar, {
-  Activity,
-  ColorScale,
-  Labels,
-  Level,
-  ThemeInput,
-} from 'react-activity-calendar'
+import ActivityCalendar, { Activity, ColorScale, Labels, ThemeInput } from 'react-activity-calendar'
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -21,10 +15,10 @@ const valueToLevel = (value: number) => {
   for (let i = 0; i < RANGES.length; i++) {
     const element = RANGES[i]
     if (value <= element) {
-      return i as Level
+      return i
     }
   }
-  return RANGES.length as Level
+  return RANGES.length
 }
 
 const readCalData = () => {
