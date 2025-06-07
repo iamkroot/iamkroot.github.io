@@ -80,6 +80,8 @@ jobs:
       #   run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Generate RSS
         run: node --experimental-transform-types ./scripts/postbuild.mjs
+        env:
+          EXPORT: 1
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
