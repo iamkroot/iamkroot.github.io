@@ -4,11 +4,13 @@ import { usePathname } from 'next/navigation'
 import { slug } from 'github-slugger'
 import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
+import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import type { Blog, TIL } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
+import { titleComponents } from '@/components/MDXComponents'
 
 interface PaginationProps {
   totalPages: number
@@ -158,7 +160,7 @@ export default function ListLayoutWithTags({
                         <div>
                           <h2 className="text-2xl leading-8 font-bold tracking-tight">
                             <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
-                              {title}
+                              <MDXLayoutRenderer code={title.code} components={titleComponents} />
                             </Link>
                           </h2>
                           <div className="flex flex-wrap">

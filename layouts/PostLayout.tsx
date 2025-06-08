@@ -3,7 +3,8 @@
 'use client'
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog, Authors, TIL } from 'contentlayer/generated'
+import { MDXLayoutRenderer } from 'pliny/mdx-components'
+import type { Blog, Authors, TIL, MDX } from 'contentlayer/generated'
 import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
@@ -14,6 +15,7 @@ import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import SocialURLs from '@/components/SocialURLs'
 import TocComponent from '@/components/StickyTOC'
+import { titleComponents } from '@/components/MDXComponents'
 
 const pageUrl = (slug) => encodeURIComponent(`${siteMetadata.siteUrl}/blog/${slug}`)
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/master/data/${path}`
@@ -32,8 +34,8 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
 interface LayoutProps {
   content: CoreContent<Blog | TIL>
   authorDetails: CoreContent<Authors>[]
-  next?: { path: string; title: string }
-  prev?: { path: string; title: string }
+  next?: { path: string; title: MDX }
+  prev?: { path: string; title: MDX }
   children: ReactNode
 }
 
@@ -59,7 +61,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 </div>
               </dl>
               <div>
-                <PageTitle>{title}</PageTitle>
+                <PageTitle>
+                  <MDXLayoutRenderer code={title.code} components={titleComponents} />
+                </PageTitle>
               </div>
             </div>
           </header>
@@ -95,7 +99,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 {` • `}
                 <SocialURLs
                   urls={hn}
-                  postUrl={hnUrl(slug, title)}
+                  postUrl={hnUrl(slug, title.raw)}
                   postText={'Post to HackerNews'}
                   discussedText={'Discussed on Hackernews'}
                 />
@@ -133,7 +137,12 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                           Previous Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/${prev.path}`}>{prev.title}</Link>
+                          <Link href={`/${prev.path}`}>
+                            <MDXLayoutRenderer
+                              code={prev.title.code}
+                              components={titleComponents}
+                            />
+                          </Link>
                         </div>
                       </div>
                     )}
@@ -143,7 +152,12 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                           Next Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/${next.path}`}>{next.title}</Link>
+                          <Link href={`/${next.path}`}>
+                            <MDXLayoutRenderer
+                              code={next.title.code}
+                              components={titleComponents}
+                            />
+                          </Link>
                         </div>
                       </div>
                     )}

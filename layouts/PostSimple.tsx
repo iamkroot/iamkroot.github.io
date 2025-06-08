@@ -1,19 +1,21 @@
 import { ReactNode } from 'react'
 import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog, TIL } from 'contentlayer/generated'
+import { MDXLayoutRenderer } from 'pliny/mdx-components'
+import type { Blog, MDX, TIL } from 'contentlayer/generated'
 import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+import { titleComponents } from '@/components/MDXComponents'
 
 interface LayoutProps {
   content: CoreContent<Blog | TIL>
   children: ReactNode
-  next?: { path: string; title: string }
-  prev?: { path: string; title: string }
+  next?: { path: string; title: MDX }
+  prev?: { path: string; title: MDX }
 }
 
 export default function PostLayout({ content, next, prev, children }: LayoutProps) {
@@ -35,7 +37,9 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                 </div>
               </dl>
               <div>
-                <PageTitle>{title}</PageTitle>
+                <PageTitle>
+                  <MDXLayoutRenderer code={title.code} components={titleComponents} />
+                </PageTitle>
               </div>
             </div>
           </header>
@@ -55,9 +59,13 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                     <Link
                       href={`/${prev.path}`}
                       className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                      aria-label={`Previous post: ${prev.title}`}
+                      aria-label={`Previous post: ${prev.title.raw}`}
                     >
-                      &larr; {prev.title}
+                      {/* TODO: Check on mobile */}
+                      <div className="flex">
+                        &larr; &nbsp;
+                        <MDXLayoutRenderer code={prev.title.code} components={titleComponents} />
+                      </div>
                     </Link>
                   </div>
                 )}
@@ -66,9 +74,13 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                     <Link
                       href={`/${next.path}`}
                       className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                      aria-label={`Next post: ${next.title}`}
+                      aria-label={`Next post: ${next.title.raw}`}
                     >
-                      {next.title} &rarr;
+                      {/* TODO: Fix the alignment */}
+                      <div className="flex">
+                        <MDXLayoutRenderer code={next.title.code} components={titleComponents} />
+                        <span>&nbsp; &rarr;</span>
+                      </div>
                     </Link>
                   </div>
                 )}

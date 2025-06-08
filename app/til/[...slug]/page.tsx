@@ -43,10 +43,10 @@ export async function generateMetadata(props: {
   const firstLine = (extract(post.body.raw)[0] || '').trim() as string
 
   return {
-    title: addTilPrefix(post.title),
+    title: addTilPrefix(post.title.raw),
     description: firstLine,
     openGraph: {
-      title: addTilPrefix(post.title),
+      title: addTilPrefix(post.title.raw),
       description: firstLine,
       siteName: siteMetadata.title,
       locale: 'en_US',
@@ -59,7 +59,7 @@ export async function generateMetadata(props: {
     },
     twitter: {
       card: 'summary_large_image',
-      title: addTilPrefix(post.title),
+      title: addTilPrefix(post.title.raw),
       description: firstLine,
       images: imageList,
     },
@@ -98,7 +98,8 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
       name: author.name,
     }
   })
-  mainContent.title = addTilPrefix(mainContent.title)
+  // TODO: Add prefix to title.code too
+  mainContent.title.raw = addTilPrefix(mainContent.title.raw)
 
   return (
     <>
