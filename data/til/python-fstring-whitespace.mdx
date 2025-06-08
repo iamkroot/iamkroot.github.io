@@ -8,4 +8,12 @@ tags: ['python']
 
 The debugging feature in Python's f-strings, like `{my_variable =}`, is sensitive to whitespace. The spaces around the variable name matter.
 
+```Python
+a = 10
+b = 20
+print(f'{a=}')  # prints "a=10"
+print(f'{b =}')  # prints "b =20"
+print(f'{a + b = }')  # prints "a + b = 30"
+```
+
 Source: Noticed in a PyTorch tutorial - [How to use CutMix and MixUp](https://pytorch.org/vision/stable/auto_examples/transforms/plot_cutmix_mixup.html#after-the-dataloader).
