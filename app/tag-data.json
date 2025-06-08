@@ -1,9 +1,4 @@
 {
-  "llvm": 1,
-  "jit": 1,
-  "asan": 1,
-  "linux": 2,
-  "driver": 1,
   "pointers": 1,
   "c": 4,
   "memory": 3,
@@ -13,15 +8,15 @@
   "compilers": 1,
   "history": 1,
   "git": 1,
-  "shell": 4,
+  "shell": 3,
   "performance": 2,
   "os": 1,
   "elf": 1,
+  "linux": 1,
   "security": 1,
   "bash": 1,
   "python": 3,
   "shortcuts": 1,
   "life": 1,
-  "india": 1,
-  "zsh": 1
+  "india": 1
 }
