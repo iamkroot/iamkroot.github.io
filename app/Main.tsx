@@ -1,8 +1,6 @@
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
-import { titleComponents } from '@/components/MDXComponents'
 import siteMetadata from '@/data/siteMetadata'
-import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
 
@@ -42,7 +40,7 @@ export default function Home({ posts }) {
                               href={`/blog/${slug}`}
                               className="text-gray-900 dark:text-gray-100"
                             >
-                              <MDXLayoutRenderer code={title.code} components={titleComponents} />
+                              {title}
                             </Link>
                           </h2>
                           {tags && (
@@ -61,7 +59,7 @@ export default function Home({ posts }) {
                         <Link
                           href={`/blog/${slug}`}
                           className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                          aria-label={`Read more: "${title.raw}"`}
+                          aria-label={`Read more: "${title}"`}
                         >
                           Read more &rarr;
                         </Link>

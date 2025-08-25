@@ -16,9 +16,3 @@ export const components: MDXComponents = {
   table: TableWrapper,
   BlogNewsletterForm,
 }
-
-// used in title fields of type MDX
-export const titleComponents: MDXComponents = {
-  // hack to remove the outer <p> tags
-  p: ({ children }) => <span>{children}</span>,
-}

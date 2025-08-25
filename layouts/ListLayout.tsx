@@ -4,12 +4,10 @@ import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
-import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import type { Blog, TIL } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
-import { titleComponents } from '@/components/MDXComponents'
 
 interface PaginationProps {
   totalPages: number
@@ -75,7 +73,7 @@ export default function ListLayout({
   const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts.filter((post) => {
     const searchContent =
-      post.title.raw + ('summary' in post ? post.summary : '') + post.tags?.join(' ')
+      post.title + ('summary' in post ? post.summary : '') + post.tags?.join(' ')
     return searchContent.toLowerCase().includes(searchValue.toLowerCase())
   })
 
@@ -137,7 +135,7 @@ export default function ListLayout({
                     <div>
                       <h3 className="text-2xl leading-8 font-bold tracking-tight">
                         <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
-                          <MDXLayoutRenderer code={title.code} components={titleComponents} />
+                          {title}
                         </Link>
                       </h3>
                       <div className="flex flex-wrap">

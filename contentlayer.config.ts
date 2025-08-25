@@ -99,7 +99,7 @@ export const Blog = defineDocumentType(() => ({
   filePathPattern: 'blog/**/*.mdx',
   contentType: 'mdx',
   fields: {
-    title: { type: 'mdx', required: true },
+    title: { type: 'string', required: true },
     date: { type: 'date', required: true },
     tags: { type: 'list', of: { type: 'string' }, default: [] },
     lastmod: { type: 'date' },
@@ -135,7 +135,7 @@ export const Til = defineDocumentType(() => ({
   filePathPattern: 'til/**/*.mdx',
   contentType: 'mdx',
   fields: {
-    title: { type: 'mdx', required: true },
+    title: { type: 'string', required: true },
     category: { type: 'string', required: true },
     date: { type: 'date', required: true },
     tags: { type: 'list', of: { type: 'string' }, default: [] },
