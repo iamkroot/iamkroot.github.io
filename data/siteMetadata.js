@@ -20,7 +20,7 @@ const siteMetadata = {
   threads: '',
   instagram: '',
   medium: '',
-  bluesky: 'https://bsky.app/profile/iamkroot.bsky.social',
+  bluesky: '',
   locale: 'en-US',
   // set to true if you want a navbar fixed to the top
   stickyNav: false,
