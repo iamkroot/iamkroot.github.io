@@ -1,4 +1,4 @@
-type Status = "active" | "passive" | "archived" | "maintenance";
+type Status = 'active' | 'passive' | 'archived' | 'maintenance'
 
 interface Projects {
   title: string
@@ -37,7 +37,8 @@ const projectsData: Projects[] = [
     title: 'Asus Numpad',
     description: 'Linux driver for Asus laptops to activate numpad on touchpad',
     href: 'https://github.com/iamkroot/asus-numpad/',
-    imgSrc: 'https://repository-images.githubusercontent.com/428760479/35fc15fd-580e-4c97-a0de-eac87f97b983',
+    imgSrc:
+      'https://repository-images.githubusercontent.com/428760479/35fc15fd-580e-4c97-a0de-eac87f97b983',
     status: 'maintenance',
   },
   {
@@ -48,7 +49,8 @@ const projectsData: Projects[] = [
   },
   {
     title: 'pyTAPL',
-    description: ' Implementations of various systems as described in Types and Programming Languages book, in Python 3.10',
+    description:
+      ' Implementations of various systems as described in Types and Programming Languages book, in Python 3.10',
     href: 'https://github.com/iamkroot/pytapl',
     status: 'archived',
   },
@@ -67,13 +69,14 @@ const projectsData: Projects[] = [
   },
   {
     title: 'MoonReader Py',
-    description: 'Collection of scripts for extracting and parsing library databases from the Moon+ Reader android app backups',
+    description:
+      'Collection of scripts for extracting and parsing library databases from the Moon+ Reader android app backups',
     href: 'https://github.com/iamkroot/moonreader-py',
     status: 'passive',
   },
   {
     title: 'Advent of Code 2022',
-    description: "[Advent of Code](https://adventofcode.com/2022/) solutions in Zig",
+    description: '[Advent of Code](https://adventofcode.com/2022/) solutions in Zig',
     href: 'https://github.com/iamkroot/aoc22-zig',
     status: 'archived',
   },
@@ -82,7 +85,7 @@ const projectsData: Projects[] = [
     description: 'Add your course schedule to a Google calendar',
     href: 'https://github.com/iamkroot/erp-gcal',
     status: 'archived',
-  }
+  },
 ]
 
 export default projectsData

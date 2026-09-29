@@ -2,11 +2,11 @@
 'use client'
 
 import React from 'react'
-import ActivityCalendar, { Activity, ColorScale, Labels, ThemeInput } from 'react-activity-calendar'
+import { ActivityCalendar, Activity, Labels, ThemeInput } from 'react-activity-calendar'
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import { readStat } from '.contentlayer/generated'
+import { readStat } from 'contentlayer/generated'
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 
 const RANGES = [0, 15 * 60, 45 * 60, 2 * 60 * 60]
@@ -55,15 +55,9 @@ const readCalData = () => {
   return { days, totalReadTime }
 }
 
-export const DEFAULT_LIGHT_THEME: ColorScale = [
-  '#ebedf0',
-  '#9be9a8',
-  '#40c463',
-  '#30a14e',
-  '#216e39',
-]
+export const DEFAULT_LIGHT_THEME: string[] = ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
 
-export const DEFAULT_DARK_THEME: ColorScale = [
+export const DEFAULT_DARK_THEME: string[] = [
   '#282828',
   'rgba(79, 140, 201, .25)',
   'rgba(79, 140, 201, .50)',
@@ -88,7 +82,7 @@ const ReadingActivity = () => {
         data={data}
         theme={theme}
         labels={labels}
-        hideTotalCount={true}
+        showTotalCount={false}
         renderBlock={(block, day) =>
           React.cloneElement(block, {
             'data-tooltip-id': 'react-tooltip',
@@ -96,7 +90,7 @@ const ReadingActivity = () => {
               day.count === 0
                 ? `No reading on ${day.date}`
                 : `${dayjs.duration(day.count, 'seconds').humanize()} spent reading on ${day.date}`,
-          })
+          } as any)
         }
       />
       <ReactTooltip id="react-tooltip" />

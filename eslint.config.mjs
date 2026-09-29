@@ -1,10 +1,11 @@
-import typescriptEslint from '@typescript-eslint/eslint-plugin'
 import globals from 'globals'
 import tsParser from '@typescript-eslint/parser'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import js from '@eslint/js'
 import { FlatCompat } from '@eslint/eslintrc'
+
+import nextPlugin from 'eslint-config-next'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -13,23 +14,18 @@ const compat = new FlatCompat({
 })
 
 export default [
+  ...nextPlugin,
   {
-    ignores: ['next-env.d.ts', 'next.config.js'],
+    ignores: ['next-env.d.ts', 'next.config.js', '.next/**', 'out/**', '.contentlayer/**'],
   },
   js.configs.recommended,
   ...compat.extends(
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:prettier/recommended',
-    'next',
-    'next/core-web-vitals'
+    'plugin:prettier/recommended'
   ),
   {
-    plugins: {
-      '@typescript-eslint': typescriptEslint,
-    },
-
+    files: ['**/*.{js,jsx,mjs,ts,tsx,mts,cts}'],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -65,6 +61,9 @@ export default [
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/ban-ts-comment': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      'react-hooks/set-state-in-effect': 'off',
+      'import/no-anonymous-default-export': 'off',
     },
   },
 ]

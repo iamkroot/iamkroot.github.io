@@ -64,7 +64,7 @@ const computedFields: ComputedFields = {
  */
 async function createTagCount(allBlogs, allTILs) {
   const tagCount: Record<string, number> = {}
-  let posts = [...allBlogs, ...allTILs]
+  const posts = [...allBlogs, ...allTILs]
   posts.forEach((file) => {
     if (file.tags && (!isProduction || file.draft !== true)) {
       file.tags.forEach((tag) => {
@@ -156,7 +156,7 @@ export const Til = defineDocumentType(() => ({
         headline: doc.title,
         datePublished: doc.date,
         dateModified: doc.lastmod || doc.date,
-        description: "",
+        description: '',
         image: doc.images ? doc.images[0] : siteMetadata.socialBanner,
         url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
       }),
@@ -183,17 +183,16 @@ export const Authors = defineDocumentType(() => ({
   computedFields,
 }))
 
-
 export const ReadStats = defineDocumentType(() => ({
   name: 'ReadStats',
   filePathPattern: 'read_stats.json',
   contentType: 'data',
   fields: {
     stats: {
-      type: "json",
+      type: 'json',
       default: {},
-      description: "Keys are dates, values are seconds of read time on that day",
-      required: true
+      description: 'Keys are dates, values are seconds of read time on that day',
+      required: true,
     },
   },
   isSingleton: true,
